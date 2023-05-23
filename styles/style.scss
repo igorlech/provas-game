@@ -23,46 +23,54 @@ section {
   width: 100%;
   height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  // justify-content: center;
-  align-items: center;
-
   font-family: "Poppins", sans-serif;
 
-  a {
-    text-decoration: none;
-    color: var(--white);
-    font-size: clamp(1rem, 2vw, 2rem);
-  }
+  .heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-  button {
-    cursor: pointer;
-    text-decoration: none;
+    a {
+      text-decoration: none;
+      color: var(--white);
+      font-size: clamp(1rem, 1.5vw, 2rem);
+    }
 
-    background-color: var(--primary-color);
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
+    button {
+      cursor: pointer;
+      text-decoration: none;
 
-    &:hover {
-      background-color: var(--primary-button-bg-hover);
+      background-color: var(--primary-color);
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--primary-button-bg-hover);
+      }
+    }
+
+    h1 {
+      font-family: "Poppins", sans-serif;
+      font-size: clamp(3rem, 7vw, 7rem);
+      text-decoration: none;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      margin-top: 7rem; //TODO: if possible, change this to make it more responsive on bigger screen sizes
     }
   }
 
-  h1 {
-    font-family: "Poppins", sans-serif;
-    font-size: clamp(3rem, 7vw, 7rem);
-    text-decoration: none;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-    margin-top: 7rem; //TODO: if possible, change this to make it more responsive on bigger screen sizes
-  }
-
-  img {
-    position: absolute;
-    bottom: 0;
-    width: 35rem;
+  .image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img {
+      position: absolute;
+      bottom: 0;
+      width: 35rem;
+    }
   }
 }
