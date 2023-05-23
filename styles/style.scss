@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #e7f2f9;
+  background-color: lightblue;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -57,6 +57,7 @@ canvas {
     align-items: center;
 
     .start-game-button {
+      color: var(--white);
       text-decoration: none;
       background-color: var(--primary-color);
       margin-bottom: 0.7rem;
@@ -80,6 +81,7 @@ canvas {
       color: var(--primary-button-bg-color);
       transition: color 0.3s ease;
       font-size: 1.2rem;
+      text-decoration: underline;
       &:hover {
         color: #3497d5;
       }
@@ -99,15 +101,6 @@ canvas {
     }
   }
 }
-
-// .instructions-section {
-//   width: 100%;
-//   height: 100vh;
-
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }
 
 .instructions-modal {
   display: none;
