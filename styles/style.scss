@@ -1,7 +1,7 @@
 :root {
   --primary-color: #054463;
   --primary-button-bg-color: #117dc1;
-  --primary-button-bg-hover: #3497d5;
+  --primary-button-bg-hover: #1e698f;
   --white: #ffffff;
 }
 
@@ -18,7 +18,7 @@ canvas {
   left: 0;
 }
 
-section {
+.landing-page {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -32,24 +32,13 @@ section {
     align-items: center;
 
     a {
-      text-decoration: none;
-      color: var(--white);
       font-size: clamp(1rem, 1.5vw, 2rem);
     }
 
     button {
       cursor: pointer;
-      text-decoration: none;
 
-      background-color: var(--primary-color);
-      padding: 1rem 1.5rem;
-      border: none;
-      border-radius: 8px;
       transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: var(--primary-button-bg-hover);
-      }
     }
 
     h1 {
@@ -57,8 +46,43 @@ section {
       font-size: clamp(3rem, 7vw, 7rem);
       text-decoration: none;
       color: var(--primary-color);
-      margin-bottom: 2rem;
-      margin-top: 7rem; //TODO: if possible, change this to make it more responsive on bigger screen sizes
+      margin-bottom: 1.5rem;
+      margin-top: 5rem; //TODO: if possible, change this to make it more responsive on bigger screen sizes
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .start-game-button {
+      text-decoration: none;
+      background-color: var(--primary-color);
+      margin-bottom: 0.7rem;
+      border: none;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+
+      &:hover {
+        background-color: var(--primary-button-bg-hover);
+      }
+    }
+
+    .onboarding-link {
+      background-color: transparent;
+      border: none;
+      color: var(--primary-button-bg-color);
+      transition: color 0.3s ease;
+      font-size: 1.2rem;
+      &:hover {
+        color: #3497d5;
+      }
     }
   }
 
@@ -67,10 +91,48 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     img {
       position: absolute;
       bottom: 0;
-      width: 35rem;
+      width: 38rem;
     }
+  }
+}
+
+// .instructions-section {
+//   width: 100%;
+//   height: 100vh;
+
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+.instructions-modal {
+  display: none;
+  background-color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  width: 450px;
+  padding: 15px;
+  border-radius: 8px;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.modal-close {
+  cursor: pointer;
+  background-color: transparent;
+  color: #117dc1;
+  border: none;
+
+  &:hover {
+    color: #3497d5;
   }
 }

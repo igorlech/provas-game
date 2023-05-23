@@ -12,15 +12,25 @@
     />
   </head>
   <body>
-    <section>
+    <section class="landing-page">
       <div class="heading">
         <h1>Trashtrophe</h1>
-        <button><a href="./pages/game.html">Start Game</a></button>
+        <div class="buttons">
+          <button class="start-game-button">
+            <a href="./pages/game.html">Start Game</a>
+          </button>
+          <button class="onboarding-link">How to sort?</button>
+        </div>
       </div>
       <div class="image-container">
         <img src="./assets/bins.svg" alt="" />
       </div>
+      <div class="instructions-modal">
+        <button class="modal-close">Close</button>
+        <img src="../assets/instructions.png" alt="" />
+      </div>
     </section>
     <script type="module" src="/main.js"></script>
+    <script type="module" src="/modal.js"></script>
   </body>
 </html>
