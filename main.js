@@ -1,18 +1,22 @@
 import "./styles/style.scss";
 import "./styles/reset.scss";
 
-import { gsap } from "gsap";
-import { Draggable } from "gsap/Draggable";
+// function init() {
+//   function dragOver(ev) {
+//     ev.preventDefault();
+//   }
 
-gsap.registerPlugin(Draggable);
+//   function dragStart(ev) {
+//     ev.dataTransfer.setData("text", ev.target.id);
+//   }
 
-function createDraggable() {
-  Draggable.create(".box", { bounds: ".draggable" });
-  console.log("draggable component loaded");
-}
+//   function drop(ev) {
+//     ev.preventDefault();
+//     let data = ev.dataTransfer.getData("text");
+//     ev.target.appendChild(document.getElementById(data));
+//   }
+// }
 
-function gameInit() {
-  createDraggable();
-}
+// init();
 
-gameInit();
+// console.log("main.js loaded");

@@ -14,9 +14,14 @@
             <img src="./assets/madaffald.svg" alt="" />
           </div>
           <div class="empty-container">
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
+            <div
+              class="empty droppable"
+              id="empty"
+              ondrop="drop(event)"
+              ondragover="dragOver(event)"
+            ></div>
+            <div class="empty droppable"></div>
+            <div class="empty droppable"></div>
           </div>
         </div>
         <div class="bin-container">
@@ -24,21 +29,26 @@
             <img src="./assets/drikkekarton.svg" alt="" />
           </div>
           <div class="empty-container">
-            <div class="empty"></div>
-            <div class="empty"></div>
-            <div class="empty"></div>
+            <div class="empty droppable"></div>
+            <div class="empty droppable"></div>
+            <div class="empty droppable"></div>
           </div>
         </div>
       </div>
-      <div class="rubbish-section draggable">
-        <div class="box">
+      <div class="rubbish-section">
+        <div
+          class="box draggable"
+          draggable="true"
+          ondragstart="dragStart(event)"
+          id="cutlery"
+        >
+          <img class="rubbish" src="./assets/Clutery.svg" alt="rubbish" />
+        </div>
+        <div class="box draggable" draggable="true" id="banana">
           <img class="rubbish" src="./assets/Banana.svg" alt="rubbish" />
         </div>
-        <div class="box">
-          <img class="rubbish" src="./assets/Banana.svg" alt="rubbish" />
-        </div>
-        <div class="box">
-          <img class="rubbish" src="./assets/Banana.svg" alt="rubbish" />
+        <div class="box draggable" draggable="true" id="bread">
+          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
         </div>
       </div>
     </section>

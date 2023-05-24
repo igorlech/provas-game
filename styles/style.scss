@@ -149,16 +149,13 @@ canvas {
   align-items: center;
   border-radius: 50%;
   border: dashed 1px black;
-}
-
-.draggable {
-  height: 100%;
+  cursor: move;
 }
 
 .empty {
   width: 100px;
   height: 100px;
-  background-color: white;
+  background-color: transparent;
   border-radius: 50%;
   border: dashed 1px black;
 }
@@ -185,7 +182,7 @@ canvas {
 }
 
 .rubbish {
-  width: 60px;
+  width: 60%;
 }
 
 .bin-image {
