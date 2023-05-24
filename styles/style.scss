@@ -132,13 +132,22 @@ canvas {
 
 // Game styling
 
-.game-body {
-  overflow: hidden;
+#game-container {
+  width: 100vw;
+  height: 100vh;
 }
 
-#canvas {
-  div {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-  }
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.draggable {
+  height: 100%;
 }
