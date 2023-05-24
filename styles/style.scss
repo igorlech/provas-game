@@ -129,3 +129,16 @@ canvas {
     color: #3497d5;
   }
 }
+
+// Game styling
+
+.game-body {
+  overflow: hidden;
+}
+
+#canvas {
+  div {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+  }
+}

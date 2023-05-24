@@ -17,7 +17,7 @@ class Player {
     this.rotation = 0;
 
     const image = new Image();
-    image.src = "./assets/player.png";
+    image.src = "../assets/player.svg";
 
     image.onload = () => {
       this.image = image;
@@ -25,7 +25,7 @@ class Player {
       this.height = 80;
       this.position = {
         x: canvas.width / 2 - this.width / 2,
-        y: canvas.height - this.height - 20,
+        y: canvas.height - this.height - 30,
       };
     };
   }
@@ -73,7 +73,7 @@ class Bullets {
   drawBullet() {
     ctx.beginPath();
     ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = "tomato";
+    ctx.fillStyle = "blue";
     ctx.fill();
     ctx.closePath();
   }
@@ -85,7 +85,7 @@ class Bullets {
   }
 }
 
-class Bird {
+class Item {
   constructor({ position }) {
     this.velocity = {
       x: 0,
@@ -93,13 +93,12 @@ class Bird {
     };
 
     const image = new Image();
-    image.src = "./assets/bird.png";
+    image.src = "../assets/banana.svg";
 
     image.onload = () => {
-      const scale = 1;
       this.image = image;
-      this.width = 40;
-      this.height = 40;
+      this.width = 120;
+      this.height = 120;
       this.position = {
         x: position.x,
         y: position.y,
@@ -134,24 +133,33 @@ class Grid {
     };
 
     this.velocity = {
-      x: 3,
+      x: 1,
       y: 0,
     };
 
-    this.birds = [];
+    this.items = [];
 
-    const rows = Math.floor(Math.random() * 5 + 1);
-    const columns = Math.floor(Math.random() * 10 + 5);
+    this.items.forEach((item) => {
+      item.classList.add("game-item");
+    });
 
-    this.width = columns * 60;
+    const itemscont = document.createElement("div");
+    canvas.appendChild(itemscont);
+    itemscont.classList.add("itemscont");
+    itemscont.innerHTML = this.items;
+
+    const rows = 1; // Math.floor(Math.random() * 5 + 1)
+    const columns = 11;
+
+    // this.width = columns * 1;
 
     for (let x = 0; x < columns; x++) {
       for (let y = 0; y < rows; y++) {
-        this.birds.push(
-          new Bird({
+        this.items.push(
+          new Item({
             position: {
-              x: x * 60,
-              y: y * 60,
+              x: Math.floor(Math.random() * 1000) - 1000,
+              y: 100,
             },
           })
         );
@@ -163,12 +171,12 @@ class Grid {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
 
-    this.velocity.y = 0;
+    // this.velocity.y = 0;
 
-    if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
-      this.velocity.x = -this.velocity.x;
-      this.velocity.y = 30;
-    }
+    // if (this.position.x + this.width >= canvas.width || this.position.x <= 0) {
+    //   this.velocity.x = -this.velocity.x;
+    //   this.velocity.y = 30;
+    // }
   }
 }
 
@@ -177,10 +185,10 @@ const bullets = [];
 const grids = [new Grid()];
 
 let keysPressed = {
-  a: {
+  arrowLeft: {
     pressed: false,
   },
-  d: {
+  arrowRight: {
     pressed: false,
   },
   space: {
@@ -205,27 +213,27 @@ function animate() {
 
   grids.forEach((grid) => {
     grid.update();
-    grid.birds.forEach((bird, index) => {
-      bird.update({ velocity: grid.velocity });
+    grid.items.forEach((item, index) => {
+      item.update({ velocity: grid.velocity });
 
       bullets.forEach((bullet, i) => {
         if (
-          bullet.position.y - bullet.radius <= bird.position.y + bird.height &&
-          bullet.position.x + bullet.radius >= bird.position.x &&
-          bullet.position.x - bullet.radius <= bird.position.x + bird.width &&
-          bullet.position.y + bullet.radius >= bird.position.y
+          bullet.position.y - bullet.radius <= item.position.y + item.height &&
+          bullet.position.x + bullet.radius >= item.position.x &&
+          bullet.position.x - bullet.radius <= item.position.x + item.width &&
+          bullet.position.y + bullet.radius >= item.position.y
         ) {
           setTimeout(() => {
-            const birdFound = grid.birds.find((bird2) => {
-              return bird2 === bird;
+            const itemFound = grid.items.find((item2) => {
+              return item2 === item;
             });
 
             const bulletFound = bullets.find((bullet2) => {
               return bullet2 === bullet;
             });
 
-            if (birdFound && bulletFound) {
-              grid.birds.splice(index, 1);
+            if (itemFound && bulletFound) {
+              grid.items.splice(index, 1);
               bullets.splice(i, 1);
             }
           }, 0);
@@ -234,11 +242,11 @@ function animate() {
     });
   });
 
-  if (keysPressed.a.pressed && player.position.x >= 0) {
+  if (keysPressed.arrowLeft.pressed && player.position.x >= 0) {
     player.velocity.x = -5;
     player.rotation = -0.15;
   } else if (
-    keysPressed.d.pressed &&
+    keysPressed.arrowRight.pressed &&
     player.position.x + player.width <= canvas.width
   ) {
     player.velocity.x = 5;
@@ -251,13 +259,17 @@ function animate() {
 
 animate();
 
+// Keyboard events
+
+//TODO: if we have time, we can add cases for a and d keys
+
 addEventListener("keydown", ({ key }) => {
   switch (key) {
-    case "a":
-      keysPressed.a.pressed = true;
+    case "ArrowLeft":
+      keysPressed.arrowLeft.pressed = true;
       break;
-    case "d":
-      keysPressed.d.pressed = true;
+    case "ArrowRight":
+      keysPressed.arrowRight.pressed = true;
       break;
     case " ":
       keysPressed.space.pressed = true;
@@ -279,11 +291,11 @@ addEventListener("keydown", ({ key }) => {
 
 addEventListener("keyup", ({ key }) => {
   switch (key) {
-    case "a":
-      keysPressed.a.pressed = false;
+    case "ArrowLeft":
+      keysPressed.arrowLeft.pressed = false;
       break;
-    case "d":
-      keysPressed.d.pressed = false;
+    case "ArrowRight":
+      keysPressed.arrowRight.pressed = false;
       break;
     case " ":
       keysPressed.space.pressed = false;
