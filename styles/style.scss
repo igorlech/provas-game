@@ -141,21 +141,28 @@ canvas {
 }
 
 .box {
+  position: absolute;
   width: 100px;
   height: 100px;
-  background-color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: dashed 1px black;
+  // border: dashed 1px black;
   cursor: move;
+
+  img {
+    width: 100%;
+  }
 }
 
 .empty {
-  width: 100px;
-  height: 100px;
-  background-color: transparent;
+  width: 120px;
+  height: 120px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: var(--white);
   border-radius: 50%;
   border: dashed 1px black;
 }
@@ -181,8 +188,13 @@ canvas {
   grid-template-columns: repeat(2, 1fr);
 }
 
+.rubbish-section {
+  display: flex;
+  align-items: center;
+}
+
 .rubbish {
-  width: 60%;
+  width: 70%;
 }
 
 .bin-image {
@@ -196,5 +208,11 @@ canvas {
     width: clamp(100px, 25vh, 300px);
     bottom: 0;
     position: absolute;
+  }
+}
+
+.droppable {
+  img {
+    width: 80px;
   }
 }
