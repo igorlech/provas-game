@@ -1,7 +1,7 @@
 export const images = [
   {
     src: "./assets/Clutery.svg",
-    id: "clutery",
+    id: "cutlery",
     alt: "cutlery",
   },
   {
