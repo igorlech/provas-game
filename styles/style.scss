@@ -10,6 +10,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 canvas {
@@ -141,14 +142,12 @@ canvas {
 }
 
 .box {
-  position: absolute;
   width: 100px;
   height: 100px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
   border-radius: 50%;
-  // border: dashed 1px black;
   cursor: move;
 
   img {
@@ -189,10 +188,43 @@ canvas {
 }
 
 .rubbish-section {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   align-items: center;
+  place-items: center;
+  margin-left: 100px;
 }
 
+.all-rubbish {
+  display: grid;
+  width: 35rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding-top: 50px;
+}
+
+.removed-items {
+  background-color: white;
+  border-radius: 8px;
+  height: 150px;
+  width: 100%;
+  align-self: center;
+
+  padding: 30px;
+  color: #054463;
+  font-family: "Poppins", sans-serif;
+}
+
+.removed-container {
+  margin-left: 100px;
+  margin-top: 50px;
+  color: #054463;
+
+  h3 {
+    margin-bottom: 15px;
+  }
+}
 .rubbish {
   width: 70%;
 }
@@ -212,7 +244,30 @@ canvas {
 }
 
 .droppable {
+  display: flex;
+  flex-direction: row;
   img {
     width: 80px;
+  }
+}
+
+.replay-btn-container {
+  position: absolute;
+  top: 85%;
+  right: 5%;
+}
+
+.replay-btn {
+  cursor: pointer;
+  color: var(--white);
+  text-decoration: none;
+  background-color: var(--primary-color);
+
+  border: none;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+
+  &:hover {
+    background-color: var(--primary-button-bg-hover);
   }
 }

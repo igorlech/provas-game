@@ -5,11 +5,13 @@ import { images } from "./data.js";
 
 console.log("main.js loaded");
 
-// Get references to the draggable and droppable elements
 const draggables = document.querySelectorAll(".draggable");
 const droppables = document.querySelectorAll(".droppable");
+
 const items = document.querySelectorAll(".box");
+
 const rubbishSection = document.querySelector(".rubbish-section");
+const replayButton = document.querySelector(".replay-button");
 
 function startDraggable() {
   // Define the dragstart event handler for the draggable elements
@@ -37,37 +39,41 @@ function startDraggable() {
   });
 }
 
-function spawnItems() {
-  for (let i = 0; i < items.length; i++) {
-    items[i].style.top =
-      Math.floor(Math.random() * (window.innerHeight - 100)) + "px";
-    items[i].style.right =
-      Math.floor((Math.random() * window.innerWidth - 100) / 2) + 100 + "px";
-  }
-}
-
 function renderItems() {
   images.forEach((image) => {
-    rubbishSection.innerHTML += `
-      <div class="box" draggable="true">
-      <img
-        class="rubbish draggable"
-        src=${image.src}
-        draggable="true"
-        id=${image.id}
-        alt=${image.alt}
-      />
-      </div>
-    `;
+    let divBox = document.createElement("div");
+    divBox.classList.add("box");
+    divBox.setAttribute("draggable", "true");
+    divBox.setAttribute("id", image.id);
+
+    let divImg = document.createElement("img");
+    divImg.classList.add("rubbish");
+    divImg.classList.add("draggable");
+    divImg.setAttribute("src", image.src);
+    divImg.setAttribute("alt", image.alt);
+    divImg.setAttribute("id", image.id);
+    divImg.setAttribute("draggable", "true");
+
+    divBox.appendChild(divImg);
+    rubbishSection.appendChild(divBox);
   });
 }
+
+// function spawnItems() {
+//   for (let i = 0; i < items.length; i++) {
+//     items[i].style.top =
+//       Math.floor(Math.random() * (window.innerHeight - 100)) + "px";
+//     items[i].style.right =
+//       Math.floor((Math.random() * window.innerWidth - 100) / 2) + 100 + "px";
+//   }
+// }
 
 // rubbishSection.insertAdjacentHTML("beforeend", );
 
 function gameInit() {
   startDraggable();
-  // renderItems();
-  spawnItems();
+  renderItems();
+  // spawnItems();
 }
 
 gameInit();
