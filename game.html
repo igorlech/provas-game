@@ -30,45 +30,54 @@
           </div>
         </div>
       </div>
-      <div class="rubbish-section droppable">
-        <div class="box" draggable="true">
-          <img
-            class="rubbish draggable"
-            src="./assets/Clutery.svg"
-            draggable="true"
-            id="cutlery"
-            alt="rubbish"
-          />
+      <div class="all-rubbish">
+        <div class="rubbish-section">
+          <div class="box" draggable="true">
+            <img
+              class="rubbish draggable"
+              src="./assets/Clutery.svg"
+              draggable="true"
+              id="cutlery"
+              alt="rubbish"
+            />
+          </div>
+          <div class="box" draggable="true">
+            <img
+              class="rubbish draggable"
+              src="./assets/Banana.svg"
+              draggable="true"
+              id="banana"
+              alt="rubbish"
+            />
+          </div>
+          <div class="box" draggable="true">
+            <img
+              class="rubbish draggable"
+              src="./assets/Bread.svg"
+              draggable="true"
+              id="bread"
+              alt="rubbish"
+            />
+          </div>
+          <div class="box" draggable="true" id="1">
+            <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
+          </div>
+          <div class="box" draggable="true" id="2">
+            <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
+          </div>
+          <div class="box" draggable="true" id="3">
+            <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
+          </div>
         </div>
-        <div class="box" draggable="true">
-          <img
-            class="rubbish draggable"
-            src="./assets/Banana.svg"
-            draggable="true"
-            id="banana"
-            alt="rubbish"
-          />
-        </div>
-        <div class="box" draggable="true">
-          <img
-            class="rubbish draggable"
-            src="./assets/Bread.svg"
-            draggable="true"
-            id="bread"
-            alt="rubbish"
-          />
-        </div>
-        <div class="box" draggable="true" id="bread">
-          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
-        </div>
-        <div class="box" draggable="true" id="bread">
-          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
-        </div>
-        <div class="box" draggable="true" id="bread">
-          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
+        <div class="removed-container">
+          <h3 class="removed-items-heading">Unused items</h3>
+          <div class="removed-items droppable"></div>
         </div>
       </div>
     </section>
+    <div class="replay-btn-container">
+      <button class="replay-btn" onclick="location.reload()">Play again</button>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
