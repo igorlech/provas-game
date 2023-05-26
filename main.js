@@ -6,13 +6,8 @@ console.log("main.js loaded");
 
 const draggables = document.querySelectorAll(".draggable");
 const droppables = document.querySelectorAll(".droppable");
-const food = document.querySelectorAll(".food");
-const metal = document.querySelectorAll(".metal");
-const foodBin = document.querySelectorAll(".food-bin");
-const metalBin = document.querySelectorAll(".metal-bin");
 
 const rubbishSection = document.querySelector(".rubbish-section");
-// const replayButton = document.querySelector(".replay-button");
 
 function renderItems() {
   images.forEach((image) => {
@@ -51,41 +46,42 @@ function startDraggable() {
 
   droppables.forEach((droppable) => {
     droppable.addEventListener("drop", (event) => {
-      event.preventDefault();
       const data = event.dataTransfer.getData("text");
       const draggableElement = document.getElementById(data);
+      event.preventDefault();
       console.log(data); // gets link instead of id
       console.log(draggableElement); // gets null here
       droppable.appendChild(draggableElement); // appends null = error
+    });
 
+    window.setInterval(function () {
       if (
-        droppable.classList.contains("metal-bin") &&
-        droppable.hasChildNodes()
+        (droppable.classList.contains("metal-bin") &&
+          droppable.hasChildNodes() &&
+          droppable.firstChild.classList.contains("metal")) ||
+        (droppable.classList.contains("food-bin") &&
+          droppable.hasChildNodes() &&
+          droppable.firstChild.classList.contains("food"))
       ) {
         console.log("metal");
         droppable.classList.add("green");
-      } else if (!droppable.hasChildNodes()) {
+      } else if (
+        !droppable.hasChildNodes() ||
+        droppable.classList.contains("removed-items")
+      ) {
         droppable.classList.remove("green");
-      } else if (!droppable.classList.contains("metal-bin")) {
-        droppable.style.backgroundColor = "red";
+        droppable.classList.remove("red");
+      } else {
+        console.log("food, red");
+        droppable.classList.add("red");
       }
-    });
+    }, 100);
   });
 }
-
-// function correctCheck() {
-//   droppables.forEach((droppable) => {
-//     if (droppable.classList.contains("metal-bin")) {
-//       console.log("metal");
-//       droppable.style.backgroundColor = green;
-//     }
-//   });
-// }
 
 function gameInit() {
   // renderItems();
   startDraggable();
-  // correctCheck();
 }
 
 gameInit();
