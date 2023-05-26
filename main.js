@@ -67,7 +67,8 @@ function startDraggable() {
         droppable.classList.add("green");
       } else if (
         !droppable.hasChildNodes() ||
-        droppable.classList.contains("removed-items")
+        droppable.classList.contains("removed-items") ||
+        droppable.classList.contains("rubbish-section")
       ) {
         droppable.classList.remove("green");
         droppable.classList.remove("red");

@@ -141,19 +141,19 @@ canvas {
   position: relative;
 }
 
-.box {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  // align-items: center;
-  border-radius: 50%;
-  cursor: move;
+// .box {
+//   width: 100px;
+//   height: 100px;
+//   display: flex;
+//   justify-content: center;
+//   // align-items: center;
+//   border-radius: 50%;
+//   cursor: move;
 
-  img {
-    width: 100%;
-  }
-}
+//   img {
+//     width: 100%;
+//   }
+// }
 
 .empty {
   width: 120px;
@@ -210,6 +210,11 @@ canvas {
   height: 150px;
   width: 100%;
   align-self: center;
+  display: flex;
+  flex-direction: row;
+  img {
+    width: 80px;
+  }
 
   padding: 30px;
   color: #054463;
@@ -227,6 +232,7 @@ canvas {
 }
 .rubbish {
   width: 70%;
+  cursor: move;
 }
 
 .bin-image {
@@ -240,14 +246,6 @@ canvas {
     width: clamp(100px, 25vh, 300px);
     bottom: 0;
     position: absolute;
-  }
-}
-
-.droppable {
-  display: flex;
-  flex-direction: row;
-  img {
-    width: 80px;
   }
 }
 
