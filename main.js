@@ -2,6 +2,8 @@ import "./styles/style.scss";
 import "./styles/reset.scss";
 import { images } from "./data.js";
 
+// console.log(images.forEach((image) => console.log(image.id)));
+
 console.log("main.js loaded");
 
 const draggables = document.querySelectorAll(".draggable");
@@ -11,10 +13,6 @@ const rubbishSection = document.querySelector(".rubbish-section");
 
 function renderItems() {
   images.forEach((image) => {
-    let divBox = document.createElement("div");
-    divBox.classList.add("box");
-    divBox.setAttribute("draggable", "true");
-
     let divImg = document.createElement("img");
     divImg.classList.add("rubbish");
     divImg.classList.add("draggable");
@@ -23,8 +21,7 @@ function renderItems() {
     divImg.setAttribute("id", image.id);
     divImg.setAttribute("draggable", "true");
 
-    divBox.appendChild(divImg);
-    rubbishSection.appendChild(divBox);
+    rubbishSection.appendChild(divImg);
   });
 }
 
@@ -46,7 +43,7 @@ function startDraggable() {
 
   droppables.forEach((droppable) => {
     droppable.addEventListener("drop", (event) => {
-      const data = event.dataTransfer.getData("text");
+      let data = event.dataTransfer.getData("text");
       const draggableElement = document.getElementById(data);
       event.preventDefault();
       console.log(data); // gets link instead of id
@@ -81,7 +78,7 @@ function startDraggable() {
 }
 
 function gameInit() {
-  // renderItems();
+  renderItems();
   startDraggable();
 }
 
