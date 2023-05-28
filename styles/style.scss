@@ -26,11 +26,15 @@ canvas {
 
   font-family: "Poppins", sans-serif;
 
+  display: grid;
+  grid-template-rows: 1fr 0.9fr;
+
   .heading {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+
+    justify-content: end;
 
     a {
       font-size: clamp(1rem, 1.5vw, 2rem);
@@ -48,7 +52,7 @@ canvas {
       text-decoration: none;
       color: var(--primary-color);
       margin-bottom: 1.5rem;
-      margin-top: 5rem; //TODO: if possible, change this to make it more responsive on bigger screen sizes
+      // margin-top: 5rem; //TODO: if possible, change this to make it more responsive on bigger screen sizes
     }
   }
 
