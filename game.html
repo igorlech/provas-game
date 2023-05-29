@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trashtrophe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="game-body">
     <section id="game-container">
@@ -36,38 +42,78 @@
             class="rubbish draggable metal"
             src="./assets/Cutlery.svg"
             draggable="true"
-            id="x"
+            id="cutlery"
             alt="rubbish"
           />
           <img
             class="rubbish draggable food"
             src="./assets/Banana.svg"
             draggable="true"
-            id="z"
+            id="banana"
             alt="rubbish"
           />
           <img
             class="rubbish draggable food"
             src="./assets/Bread.svg"
             draggable="true"
-            id="y"
+            id="bread"
             alt="rubbish"
           />
-          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
-
-          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
-
-          <img class="rubbish" src="./assets/Bread.svg" alt="rubbish" />
-        </div>
-        <div class="removed-container">
-          <h3 class="removed-items-heading">Unused items</h3>
-          <div class="removed-items droppable"></div>
+          <img
+            class="rubbish draggable metal"
+            src="./assets/can.svg"
+            draggable="true"
+            id="can"
+            alt="rubbish"
+          />
+          <img
+            class="rubbish draggable unused"
+            src="./assets/paperbag.svg"
+            draggable="true"
+            id="paperbag"
+            alt="rubbish"
+          />
+          <img
+            class="rubbish draggable metal"
+            src="./assets/tin.svg"
+            draggable="true"
+            id="tin"
+            alt="rubbish"
+          />
+          <img
+            class="rubbish draggable food"
+            src="./assets/Croissant.svg"
+            draggable="true"
+            id="croissant"
+            alt="rubbish"
+          />
+          <img
+            class="rubbish draggable unused"
+            src="./assets/Bottle.svg"
+            draggable="true"
+            id="bottle"
+            alt="rubbish"
+          />
+          <img
+            class="rubbish draggable unused"
+            src="./assets/Package.svg"
+            draggable="true"
+            id="package"
+            alt="rubbish"
+          />
         </div>
       </div>
+      <div class="replay-btn-container">
+        <button class="replay-btn" onclick="location.reload()">Restart</button>
+      </div>
     </section>
-    <div class="replay-btn-container">
-      <button class="replay-btn" onclick="location.reload()">Restart</button>
+    <div class="end-modal">
+      <p>CONGRATS, YOU WON!</p>
+
+      <button class="replay-btn" onclick="location.reload()">Play again</button>
     </div>
+    <div class="modal-overlay"></div>
+
     <script type="module" src="/main.js"></script>
   </body>
 </html>
