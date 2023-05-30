@@ -1,123 +1,116 @@
 :root {
-  --primary-color: #054463;
-  --primary-button-bg-color: #117dc1;
+  --primary-blue: #054463;
+  --primary-link-color: #117dc1;
+  --primary-bg-color: #ededed;
+  --hover-link-color: #3497d5;
   --primary-button-bg-hover: #1e698f;
   --white: #ffffff;
+  --black: #000000;
+  --red: #ef9a9a;
+  --green: #a5d6a7;
+  --background-overlay: rgba(0, 0, 0, 0.499);
+  --border-radius: 8px;
 }
 
 body {
-  background-color: #ededed;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 
-canvas {
-  position: relative;
-  top: 0;
-  left: 0;
+  background-color: var(--primary-bg-color);
+  font-family: "Poppins", sans-serif;
 }
 
 .landing-page {
   position: relative;
-  width: 100%;
-  height: 100vh;
-
-  font-family: "Poppins", sans-serif;
 
   display: grid;
   grid-template-rows: 1fr 0.9fr;
+  width: 100%;
+  height: 100vh;
+}
 
-  .heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.landing-page-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
 
-    justify-content: end;
+  h1 {
+    margin-bottom: 1.5rem;
 
-    a {
-      font-size: clamp(1rem, 1.5vw, 2rem);
-    }
-
-    button {
-      cursor: pointer;
-
-      transition: background-color 0.3s ease;
-    }
-
-    h1 {
-      font-family: "Poppins", sans-serif;
-      font-size: clamp(3rem, 7vw, 7rem);
-      text-decoration: none;
-      color: var(--primary-color);
-      margin-bottom: 1.5rem;
-    }
+    color: var(--primary-blue);
+    font-family: "Poppins", sans-serif;
+    font-size: clamp(3rem, 7vw, 7rem);
+    text-decoration: none;
   }
+}
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.landing-page-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .start-game-button {
-      color: var(--white);
-      text-decoration: none;
-      background-color: var(--primary-color);
-      margin-bottom: 0.7rem;
-      border: none;
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
+.start-game-button {
+  margin-bottom: 0.7rem;
+  padding: 1rem 1.5rem;
 
-      a {
-        color: white;
-        text-decoration: none;
-      }
+  font-size: clamp(1rem, 1.5vw, 2rem);
+  color: var(--white);
+  background-color: var(--primary-blue);
+  text-decoration: none;
+  border: none;
+  border-radius: var(--border-radius);
 
-      &:hover {
-        background-color: var(--primary-button-bg-hover);
-      }
-    }
+  transition: background-color 0.3s ease;
 
-    .onboarding-link {
-      background-color: transparent;
-      border: none;
-      color: var(--primary-button-bg-color);
-      transition: color 0.3s ease;
-      font-size: 1.2rem;
-      text-decoration: underline;
-      &:hover {
-        color: #3497d5;
-      }
-    }
+  &:hover {
+    background-color: var(--primary-button-bg-hover);
   }
+}
 
-  .image-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.onboarding-link {
+  color: var(--primary-link-color);
+  background-color: transparent;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  border: none;
+  transition: color 0.3s ease;
+  cursor: pointer;
 
-    img {
-      position: absolute;
-      bottom: 0;
-      width: 38rem;
-    }
+  &:hover {
+    color: var(--hover-link-color);
+  }
+}
+
+.landing-page-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    width: 38rem;
   }
 }
 
 .instructions-modal {
-  display: none;
-  background-color: white;
   position: absolute;
+  z-index: 99;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+
+  display: none;
   align-items: center;
   width: 450px;
   padding: 15px;
-  border-radius: 8px;
-  z-index: 99;
+
+  background-color: var(--white);
+  transform: translate(-50%, -50%);
+  border-radius: var(--border-radius);
 
   img {
     object-fit: cover;
@@ -127,42 +120,30 @@ canvas {
 .modal-close {
   cursor: pointer;
   background-color: transparent;
-  color: #117dc1;
+  color: var(--primary-link-color);
   border: none;
 
   &:hover {
-    color: #3497d5;
+    color: var(--hover-link-color);
   }
-}
-
-.modal-cover {
-  display: none;
-  width: 100%;
-  height: 100%;
-  z-index: 98;
-  position: absolute;
-  background-color: rgb(74, 74, 74, 0.8);
 }
 
 // Game styling
 
-#game-container {
+.game-container {
+  position: relative;
+
   display: grid;
   grid-template-columns: 1fr 4fr 5fr 1fr;
   width: 100vw;
   height: 100vh;
-  position: relative;
 }
 
-.empty {
-  width: 120px;
-  height: 120px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  background-color: var(--white);
-  border-radius: 50%;
-  border: dashed 1px black;
+.containers-section {
+  grid-column: 2;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .bin-container {
@@ -171,82 +152,65 @@ canvas {
   grid-template-rows: 4fr 2fr;
 }
 
-.empty-container {
+.bin-image {
+  grid-row: 2;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+
+  img {
+    position: absolute;
+    bottom: 0;
+    width: clamp(100px, 25vh, 300px);
+  }
+}
+
+.dropzone-container {
   grid-row: 1;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.containers-section {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column: 2;
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+
+  background-color: var(--white);
+  border-radius: 50%;
+  border: dashed 1px var(--black);
 }
 
-.rubbish-section {
+.items-container {
+  grid-column: 3;
+
+  display: grid;
+  width: 35rem;
+  padding-top: 50px;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.items-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+
   align-items: center;
   place-items: center;
   margin-left: 100px;
 }
 
-.all-rubbish {
-  display: grid;
-  width: 35rem;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  padding-top: 50px;
-  grid-column: 3;
-}
-
-.removed-items {
-  background-color: transparent;
-  border: dashed 1px black;
-  border-radius: 8px;
-  height: 150px;
-  width: 100%;
-  align-self: center;
-  display: flex;
-  flex-direction: row;
-  img {
-    width: 80px;
-  }
-
-  padding: 30px;
-  color: #054463;
-  font-family: "Poppins", sans-serif;
-}
-
-.removed-container {
-  margin-left: 100px;
-  margin-top: 50px;
-  color: #054463;
-
-  h3 {
-    margin-bottom: 15px;
-  }
-}
-.rubbish {
+.item {
+  cursor: grab;
   width: 60%;
-  cursor: move;
-}
-
-.bin-image {
-  grid-row: 2;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-
-  img {
-    width: clamp(100px, 25vh, 300px);
-    bottom: 0;
-    position: absolute;
-  }
 }
 
 .replay-btn-container {
@@ -259,11 +223,13 @@ canvas {
   cursor: pointer;
   color: var(--white);
   text-decoration: none;
-  background-color: var(--primary-color);
+  background-color: var(--primary-blue);
 
   border: none;
   border-radius: 8px;
   padding: 1rem 1.5rem;
+
+  transition: background-color 0.3s ease;
 
   &:hover {
     background-color: var(--primary-button-bg-hover);
@@ -271,43 +237,47 @@ canvas {
 }
 
 .green {
-  background-color: #a5d6a7;
+  background-color: var(--green);
 }
 
 .red {
-  background-color: #ef9a9a;
+  background-color: var(--red);
 }
 
 .end-modal {
+  position: absolute;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+
   display: none;
   width: 40rem;
-  border-radius: 8px;
   height: 20rem;
-  background-color: white;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 99;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  background-color: var(--white);
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
   gap: 30px;
 
   p {
-    color: var(--primary-color);
+    color: var(--primary-blue);
     font-size: 2.5rem;
     font-weight: 700;
   }
 }
 
 .modal-overlay {
-  display: none;
-  z-index: 98;
-  background-color: rgba(0, 0, 0, 0.499);
-  width: 100vw;
-  height: 100vh;
   position: absolute;
   top: 0;
+  z-index: 98;
+
+  display: none;
+  width: 100vw;
+  height: 100vh;
+
+  background-color: var(--background-overlay);
   overflow: hidden;
 }

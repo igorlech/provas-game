@@ -3,7 +3,7 @@ import "./styles/reset.scss";
 
 const draggables = document.querySelectorAll(".draggable");
 const droppables = document.querySelectorAll(".droppable");
-const empty = document.querySelectorAll(".empty");
+const dropzone = document.querySelectorAll(".dropzone");
 const endModal = document.querySelector(".end-modal");
 const modalOverlay = document.querySelector(".modal-overlay");
 
@@ -40,8 +40,7 @@ function gameInit() {
         droppable.classList.add("green");
       } else if (
         !droppable.hasChildNodes() ||
-        droppable.classList.contains("removed-items") ||
-        droppable.classList.contains("rubbish-section")
+        droppable.classList.contains("items-grid")
       ) {
         droppable.classList.remove("green");
         droppable.classList.remove("red");
@@ -49,13 +48,13 @@ function gameInit() {
         droppable.classList.add("red");
       }
 
-      let emptiesArray = Array.from(empty);
+      let dropzonesArray = Array.from(dropzone);
 
-      let check = emptiesArray.every((empty) =>
-        empty.classList.contains("green")
+      let winCheck = dropzonesArray.every((dropzone) =>
+        dropzone.classList.contains("green")
       );
 
-      if (check) {
+      if (winCheck) {
         endModal.style.display = "flex";
         modalOverlay.style.display = "flex";
       }
