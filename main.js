@@ -22,7 +22,7 @@ function gameInit() {
 
   droppables.forEach((droppable) => {
     droppable.addEventListener("drop", (event) => {
-      const data = event.dataTransfer.getData("text");
+      const data = event.dataTransfer.getData("text/plain");
       const draggableElement = document.getElementById(data);
       event.preventDefault();
       droppable.appendChild(draggableElement);
